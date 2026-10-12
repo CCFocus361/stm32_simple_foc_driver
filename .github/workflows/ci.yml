@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  foc-host-test:
+    name: FOC 数学库主机端测试
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 检查正弦表是否与脚本一致
+        run: |
+          python3 tools/gen_sin_table.py
+          git diff --exit-code firmware/foc/sin_table.h
+      - name: 编译并运行测试
+        run: |
+          cd firmware/test
+          gcc -O2 -Wall -Wextra -I../foc test_foc.c ../foc/foc_math.c ../foc/foc_pi.c -lm -o test_foc
+          ./test_foc
+
+  # 硬件 CI（KiCad ERC/DRC）等有了 .kicad_sch / .kicad_pcb 后再加，
+  # 可使用 kicad-cli 或社区的 kicad-actions。

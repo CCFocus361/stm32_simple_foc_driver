@@ -1,0 +1,50 @@
+# ---------- Keil MDK ----------
+*.o
+*.d
+*.crf
+*.axf
+*.lst
+*.map
+*.htm
+*.dep
+*.build_log.htm
+*.sct.bak
+Objects/
+Listings/
+DebugConfig/
+RTE/
+*.uvguix.*
+*.uvoptx
+*.scvd
+JLinkLog.txt
+
+# ---------- STM32CubeMX ----------
+# .ioc 要提交；备份与日志不要
+*.ioc.bak
+.mxproject.bak
+
+# ---------- KiCad ----------
+*-backups/
+*.kicad_prl
+fp-info-cache
+_autosave-*
+*.bak
+*.lck
+*-rescue.*
+# 制板文件放 GitHub Releases，不放仓库
+hardware/gerber/*.zip
+
+# ---------- Python / 工具 ----------
+__pycache__/
+*.pyc
+.venv/
+
+# ---------- 编辑器 / 系统 ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---------- 主机端测试产物 ----------
+firmware/test/test_foc
+firmware/test/*.exe
